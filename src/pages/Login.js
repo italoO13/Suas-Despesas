@@ -65,19 +65,19 @@ class Login extends React.Component {
               onChange={ this.handleInput }
             />
           </label>
+
+          <button
+            type="button"
+            disabled={ validLogin }
+            onClick={ () => {
+              loginStore(email, senha);
+              history.push('/carteira');
+            } }
+          >
+            Entrar
+
+          </button>
         </form>
-        <button
-          type="button"
-          disabled={ validLogin }
-          onClick={ () => {
-            loginStore(email, senha);
-            history.push('/carteira');
-          } }
-        >
-          Entrar
-
-        </button>
-
       </div>);
   }
 }
