@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies } from '../actions';
 import Header from '../components/Header';
+import FormDespesas from '../components/FormDespesas';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class Wallet extends React.Component {
       <div>
         <Header />
         TrybeWallet
+        <FormDespesas />
       </div>);
   }
 }
