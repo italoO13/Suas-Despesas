@@ -95,6 +95,7 @@ class FormDespesas extends React.Component {
           <select
             data-testid="tag-input"
             name="Tag"
+            id="Tag"
             value={ Tag }
             onChange={ this.handleInput }
           >

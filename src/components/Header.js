@@ -10,7 +10,7 @@ class Header extends React.Component {
       const { exchangeRates } = expense;
       return arr + (expense.value * parseFloat(exchangeRates[expense.currency].ask));
     }, 0);
-    return valor;
+    return valor.toFixed(2);
   }
 
   render() {

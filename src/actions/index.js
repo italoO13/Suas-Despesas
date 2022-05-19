@@ -67,7 +67,7 @@ export function fetchExpense(obj) {
       const response = await fetch('https://economia.awesomeapi.com.br/json/all');
       const data = await response.json();
       const coins = Object.keys(data);
-      const currencies = coins.reduce((arr, coin) => (coin !== 'USDT'
+      const currencies = coins.reduce((arr, coin) => (coin
         ? { ...arr, [coin]: data[coin] }
         : arr), {});
       dispatch(getExpense(obj, currencies));
