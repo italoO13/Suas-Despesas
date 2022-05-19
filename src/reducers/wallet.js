@@ -1,8 +1,10 @@
-import { REQUEST, FAILED,
-  GET_CURRENCIES, GET_EXPENSE, EXCLUDE_EXPENSE } from '../actions';
+import { REQUEST,
+  GET_CURRENCIES, GET_EXPENSE, EXCLUDE_EXPENSE,
+  STATUS_ATIVE, STATUS_DESATIVE } from '../actions';
 
 const INITIAL_STATE = {
-  loading: false,
+  idEdit: '',
+  isEdit: false,
   error: '',
   currencies: [],
   expenses: [],
@@ -13,19 +15,11 @@ const wallet = (state = INITIAL_STATE, action) => {
   case REQUEST:
     return {
       ...state,
-      loading: true,
     };
   case GET_CURRENCIES:
     return {
       ...state,
       currencies: action.currencies,
-      loading: false,
-    };
-  case FAILED:
-    return {
-      ...state,
-      error: action.error,
-      loading: false,
     };
   case GET_EXPENSE:
     return {
@@ -36,7 +30,7 @@ const wallet = (state = INITIAL_STATE, action) => {
           value: action.obj.value,
           currency: action.obj.currency,
           method: action.obj.method,
-          tag: action.obj.Tag,
+          tag: action.obj.tag,
           description: action.obj.description,
           exchangeRates: action.currencies,
         },
@@ -46,6 +40,21 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: state.expenses.filter((expense) => expense.id !== action.id),
+    };
+  case STATUS_ATIVE:
+    return {
+      ...state,
+      isEdit: true,
+      idEdit: action.id,
+    };
+  case STATUS_DESATIVE:
+    return {
+      ...state,
+      expenses: state.expenses.reduce((arr, expense) => (expense.id === state.idEdit
+        ? [...arr, action.obj]
+        : [...arr, expense]), []),
+      idEdit: '',
+      isEdit: false,
     };
   default:
     return state;

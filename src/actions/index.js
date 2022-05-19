@@ -5,11 +5,23 @@ export const FAILED = 'FAILED';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const GET_EXPENSE = 'GET_EXPENSE';
 export const EXCLUDE_EXPENSE = 'EXCLUSE_EXPENSE';
+export const STATUS_ATIVE = 'STATUS_ATIVE';
+export const STATUS_DESATIVE = 'STATUS_DESATIVE';
 
 export const actLogin = (email, senha) => ({
   type: LOGIN,
   email,
   senha,
+});
+
+export const statusEdicaoAtv = (id) => ({
+  type: STATUS_ATIVE,
+  id,
+});
+
+export const statusEdicaoDes = (obj) => ({
+  type: STATUS_DESATIVE,
+  obj,
 });
 
 const request = () => ({

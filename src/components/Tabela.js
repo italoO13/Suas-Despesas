@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { excluirDespesa } from '../actions';
+import { excluirDespesa, statusEdicaoAtv } from '../actions';
 
 class Tabela extends React.Component {
   render() {
-    const { dados, excluir } = this.props;
+    const { dados, excluir, editar } = this.props;
     return (
       <table>
         <thead>
@@ -42,7 +42,14 @@ class Tabela extends React.Component {
               </td>
               <td>Real</td>
               <td>
-                <button type="button">Editar</button>
+                <button
+                  type="button"
+                  onClick={ () => editar(expense.id) }
+                  data-testid="edit-btn"
+                >
+                  Editar
+
+                </button>
                 <button
                   type="button"
                   data-testid="delete-btn"
@@ -67,6 +74,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (Dispatch) => ({
   excluir: (id) => Dispatch(excluirDespesa(id)),
+  editar: (id) => Dispatch(statusEdicaoAtv(id)),
 });
 
 Tabela.propTypes = {

@@ -5,6 +5,7 @@ import { fetchCurrencies } from '../actions';
 import Header from '../components/Header';
 import FormDespesas from '../components/FormDespesas';
 import Tabela from '../components/Tabela';
+import FormEdit from '../components/FormEdit';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -13,11 +14,14 @@ class Wallet extends React.Component {
   }
 
   render() {
+    const { statusEdit } = this.props;
     return (
       <div>
         <Header />
         TrybeWallet
-        <FormDespesas />
+        {statusEdit
+          ? <FormEdit />
+          : <FormDespesas />}
         <Tabela />
       </div>);
   }
@@ -27,8 +31,12 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCurrencie: () => dispatch(fetchCurrencies()),
 });
 
+const mapStateToProps = (state) => ({
+  statusEdit: state.wallet.isEdit,
+});
+
 Wallet.propTypes = {
   fetchCurrencies: PropTypes.func,
 }.isRequired;
 
-export default connect(null, mapDispatchToProps)(Wallet);
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
