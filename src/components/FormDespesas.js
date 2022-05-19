@@ -1,47 +1,89 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchExpense } from '../actions';
 
 class FormDespesas extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      Tag: 'Alimentação',
+
+    };
+  }
+
   renderOptCoins = (coin, index) => <option key={ index } value={ coin }>{coin}</option>
 
+  handleInput = ({ target }) => {
+    const { name } = target;
+    const { value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  cleanValue = () => {
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+    });
+  }
+
   render() {
-    const { coins } = this.props;
+    const { value, description, currency, method, Tag } = this.state;
+    const { coins, id, fetExpense } = this.props;
     return (
       <form>
         <label htmlFor="valor">
           Valor
           <input
             type="number"
-            name="valor"
+            name="value"
             data-testid="value-input"
-            // value={ email }
-            // onChange={ this.handleInput }
+            value={ value }
+            onChange={ this.handleInput }
           />
         </label>
 
-        <label htmlFor="descricao">
+        <label htmlFor="description">
           Descricao
           <input
             type="text"
-            name="descricao"
+            name="description"
             data-testid="description-input"
-            // value={ email }
-            // onChange={ this.handleInput }
+            value={ description }
+            onChange={ this.handleInput }
           />
         </label>
 
         <label htmlFor="moeda">
           Moeda
-          <select id="moeda">
+          <select
+            id="moeda"
+            name="currency"
+            value={ currency }
+            onChange={ this.handleInput }
+          >
             {coins.map((coin, index) => this.renderOptCoins(coin, index))}
 
           </select>
         </label>
 
-        <label htmlFor="Pagamento">
-          Método de Pagamento
-          <select data-testid="method-input" name="pagamento">
+        <label htmlFor="method">
+          Forma de Pagamento
+          <select
+            data-testid="method-input"
+            id="method"
+            name="method"
+            value={ method }
+            onChange={ this.handleInput }
+          >
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
             <option value="Cartão de débito">Cartão de débito</option>
@@ -50,7 +92,12 @@ class FormDespesas extends React.Component {
 
         <label htmlFor="Tag">
           Catégoria de Despesa
-          <select data-testid="tag-input" name="tag">
+          <select
+            data-testid="tag-input"
+            name="Tag"
+            value={ Tag }
+            onChange={ this.handleInput }
+          >
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
             <option value="Trabalho">Trabalho</option>
@@ -58,6 +105,17 @@ class FormDespesas extends React.Component {
             <option value="Saúde">Saúde</option>
           </select>
         </label>
+
+        <button
+          type="button"
+          onClick={ () => {
+            fetExpense({ id, ...this.state });
+            this.cleanValue();
+          } }
+        >
+          Adicionar Despesa
+
+        </button>
       </form>
     );
   }
@@ -65,10 +123,15 @@ class FormDespesas extends React.Component {
 
 const mapStateToProps = (state) => ({
   coins: state.wallet.currencies,
+  id: state.wallet.expenses.length,
+});
+
+const mapDispatchToProps = (Dispatch) => ({
+  fetExpense: (obj) => Dispatch(fetchExpense(obj)),
 });
 
 FormDespesas.propTypes = {
   coins: PropTypes.arrayOf,
 }.isRequired;
 
-export default connect(mapStateToProps)(FormDespesas);
+export default connect(mapStateToProps, mapDispatchToProps)(FormDespesas);

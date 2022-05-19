@@ -24,7 +24,7 @@ afterEach(() => jest.clearAllMocks());
 
 describe('6 - Salve todas as informações do formulário no estado global', () => {
   test('Um botão com o texto \'Adicionar despesa\' que salva as informações da despesa no estado global e atualiza a soma de despesas no header', async () => {
-    const { store } = renderWithRouterAndStore(<Wallet />, '/carteira');
+    const { store, debug } = renderWithRouterAndStore(<Wallet />, '/carteira');
 
     const currencyInput = await screen.findByRole('combobox', {
       name: /moeda/i,
@@ -37,7 +37,6 @@ describe('6 - Salve todas as informações do formulário no estado global', () 
     const descriptionInput = await screen.findByTestId(DESCRIPTION_INPUT_TEST_ID);
 
     expect(addButton).toBeInTheDocument();
-
     userEvent.type(valueInput, '11');
     userEvent.selectOptions(currencyInput, 'USD');
     userEvent.selectOptions(methodInput, 'Cartão de crédito');

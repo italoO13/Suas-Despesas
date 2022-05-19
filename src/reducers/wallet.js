@@ -1,4 +1,4 @@
-import { REQUEST, FAILED, GET_CURRENCIES } from '../actions';
+import { REQUEST, FAILED, GET_CURRENCIES, GET_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   loading: false,
@@ -25,6 +25,22 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       error: action.error,
       loading: false,
+    };
+  case GET_EXPENSE:
+    return {
+      ...state,
+      expenses: [...state.expenses,
+        {
+          id: action.obj.id,
+          value: action.obj.value,
+          description: action.obj.description,
+          method: action.obj.method,
+          currency: action.obj.currency,
+          tad: action.obj.tag,
+          exchangeRates: action.currencies,
+        },
+      ],
+
     };
   default:
     return state;
