@@ -1,4 +1,5 @@
-import { REQUEST, FAILED, GET_CURRENCIES, GET_EXPENSE } from '../actions';
+import { REQUEST, FAILED,
+  GET_CURRENCIES, GET_EXPENSE, EXCLUDE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   loading: false,
@@ -40,7 +41,11 @@ const wallet = (state = INITIAL_STATE, action) => {
           exchangeRates: action.currencies,
         },
       ],
-
+    };
+  case EXCLUDE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => expense.id !== action.id),
     };
   default:
     return state;

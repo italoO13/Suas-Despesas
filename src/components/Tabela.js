@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { excluirDespesa } from '../actions';
 
 class Tabela extends React.Component {
   render() {
-    const { dados } = this.props;
+    const { dados, excluir } = this.props;
     return (
       <table>
         <thead>
@@ -40,6 +41,18 @@ class Tabela extends React.Component {
                 ).toFixed(2)}
               </td>
               <td>Real</td>
+              <td>
+                <button type="button">Editar</button>
+                <button
+                  type="button"
+                  data-testid="delete-btn"
+                  onClick={ () => excluir(expense.id) }
+                >
+                  Excluir
+
+                </button>
+
+              </td>
 
             </tr>
           ))}
@@ -52,8 +65,12 @@ const mapStateToProps = (state) => ({
   dados: state.wallet.expenses,
 });
 
+const mapDispatchToProps = (Dispatch) => ({
+  excluir: (id) => Dispatch(excluirDespesa(id)),
+});
+
 Tabela.propTypes = {
   dados: PropTypes.arrayOf,
 }.isRequired;
 
-export default connect(mapStateToProps)(Tabela);
+export default connect(mapStateToProps, mapDispatchToProps)(Tabela);

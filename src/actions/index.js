@@ -4,6 +4,7 @@ export const REQUEST = 'REQUEST';
 export const FAILED = 'FAILED';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const GET_EXPENSE = 'GET_EXPENSE';
+export const EXCLUDE_EXPENSE = 'EXCLUSE_EXPENSE';
 
 export const actLogin = (email, senha) => ({
   type: LOGIN,
@@ -23,6 +24,11 @@ const failed = (error) => ({
 const getCurrencies = (currencies) => ({
   type: GET_CURRENCIES,
   currencies,
+});
+
+export const excluirDespesa = (id) => ({
+  type: EXCLUDE_EXPENSE,
+  id,
 });
 
 // Caso precise pegar info do objeto inteiro
