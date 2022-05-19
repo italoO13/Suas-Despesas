@@ -52,9 +52,8 @@ const mapStateToProps = (state) => ({
   dados: state.wallet.expenses,
 });
 
-// Header.propTypes = {
-//   email: PropTypes.string,
-//   expenses: PropTypes.arrayOf,
-// }.isRequired;
+Tabela.propTypes = {
+  dados: PropTypes.arrayOf,
+}.isRequired;
 
 export default connect(mapStateToProps)(Tabela);
