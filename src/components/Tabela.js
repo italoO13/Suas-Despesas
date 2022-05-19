@@ -26,19 +26,18 @@ class Tabela extends React.Component {
               <td>{expense.description}</td>
               <td>{expense.tag}</td>
               <td>{expense.method}</td>
-              <td>{expense.value}</td>
+              <td>{ parseFloat(expense.value).toFixed(2)}</td>
               <td>{expense.exchangeRates[expense.currency].name}</td>
               <td>
-                {Math.round(parseFloat(
+                {(parseFloat(
                   expense.exchangeRates[expense.currency].ask,
                 )).toFixed(2)}
               </td>
               <td>
-                {Math.round(
-                  Math.floor(expense.exchangeRates[expense.currency].ask)
-              * Math.floor(expense.value),
-                  2,
-                )}
+                {(
+                  parseFloat(expense.exchangeRates[expense.currency].ask)
+              * parseFloat(expense.value)
+                ).toFixed(2)}
               </td>
               <td>Real</td>
 
