@@ -25,7 +25,7 @@ describe('10 - Crie um botão para editar uma despesa da tabela contendo as segu
   test('O botão deve estar dentro do último item da linha da tabela e deve possuir `data-testid="edit-btn"`', () => {
     renderWithRouterAndStore(<Wallet />, '/carteira', initial);
     const btnEdit = document.getElementsByTagName('tr')[1].lastChild.firstChild;
-    expect(btnEdit).toBeInTheDocument();
+    expect(btnEdit).toBeItesteheDocument();
     expect(btnEdit.dataset.testid).toBe(BTN_EDIT_TEST_ID);    
 });
 

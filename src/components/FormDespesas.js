@@ -11,7 +11,7 @@ class FormDespesas extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      Tag: 'Alimentação',
+      tag: 'Alimentação',
 
     };
   }
@@ -36,7 +36,7 @@ class FormDespesas extends React.Component {
   }
 
   render() {
-    const { value, description, currency, method, Tag } = this.state;
+    const { value, description, currency, method, tag } = this.state;
     const { coins, id, fetExpense } = this.props;
     return (
       <form>
@@ -94,9 +94,9 @@ class FormDespesas extends React.Component {
           Catégoria de Despesa
           <select
             data-testid="tag-input"
-            name="Tag"
+            name="tag"
             id="Tag"
-            value={ Tag }
+            value={ tag }
             onChange={ this.handleInput }
           >
             <option value="Alimentação">Alimentação</option>
