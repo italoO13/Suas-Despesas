@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { actLogin } from '../actions';
+import imgLogin from '../imgs/capaLogin1.jpg';
+import styles from '../styles/login.module.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -42,43 +44,56 @@ class Login extends React.Component {
     const { email, senha, validLogin } = this.state;
     const { loginStore, history } = this.props;
     return (
-      <div>
-        <h1>Login</h1>
-        <form>
-          <label htmlFor="email">
-            Login
-            <input
-              type="text"
-              name="email"
-              data-testid="email-input"
-              value={ email }
-              onChange={ this.handleInput }
-            />
-          </label>
-          <label htmlFor="senha">
-            Senha
-            <input
-              type="password"
-              name="senha"
-              data-testid="password-input"
-              value={ senha }
-              onChange={ this.handleInput }
-            />
-          </label>
+      <div className={ styles.login }>
 
-          <button
-            type="button"
-            disabled={ validLogin }
-            onClick={ () => {
-              loginStore(email, senha);
-              history.push('/carteira');
-            } }
-          >
-            Entrar
+        <div className={ styles.wrapperlogin }>
+          <div className={ styles.descricao }>
+            <div className={ styles.texto }>
+              <h1>Bem vindo ao Sistema</h1>
+              <p>Aqui você controla suas contas no exterior de forma fácil e rápida</p>
+            </div>
+          </div>
+          <form className={ styles.formLogin }>
+            <div className={ styles.imgWrapper }>
+              <img src={ imgLogin } alt="capaLogin" />
 
-          </button>
-        </form>
-      </div>);
+            </div>
+            <label htmlFor="email">
+              <input
+                type="text"
+                name="email"
+                data-testid="email-input"
+                placeholder="Email"
+                value={ email }
+                onChange={ this.handleInput }
+              />
+            </label>
+            <label htmlFor="senha">
+              <input
+                type="password"
+                placeholder="Senha"
+                name="senha"
+                data-testid="password-input"
+                value={ senha }
+                onChange={ this.handleInput }
+              />
+            </label>
+
+            <button
+              type="button"
+              disabled={ validLogin }
+              onClick={ () => {
+                loginStore(email, senha);
+                history.push('/carteira');
+              } }
+            >
+              Entrar
+
+            </button>
+          </form>
+        </div>
+      </div>
+    );
   }
 }
 

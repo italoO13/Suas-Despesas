@@ -1,0 +1,76 @@
+.header {
+  background-color: var(--cor-azulForte);
+  color: #f5fdfd;
+}
+
+nav {
+  background-color: var(--cor-azulForte);
+  display: flex;
+  justify-content: space-between;
+  line-height: 90px;
+  overflow: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+}
+
+.imgWrapper {
+  height: 100%;
+  position: relative;
+  width: 150px;
+}
+
+.imgWrapper img {
+  position: absolute;
+  width: 80%;
+
+}
+
+.infodespesas {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+
+}
+
+.wrapperDespesas {
+  align-items: center;
+  display: flex;
+
+}
+
+.valor {
+  display: flex;
+  flex-direction: column;
+}
+
+.valor p {
+  line-height: 25px;
+}
+
+.coinIcon {
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.totalDespesa {
+  color: var(--cor-vermelho);
+  font-size: 30px;
+}
+
+.wrapperDespesas button {
+  background-color: var(--cor-verdeFraco);
+  border: solid transparent 1px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  color: #f5fdfd;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 25px;
+  padding: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.wrapperDespesas button:hover {
+  opacity: 0.9;
+}
