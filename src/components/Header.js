@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FaCoins } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import logo from '../imgs/logo.png';
 import styles from '../styles/header.module.css';
 
@@ -39,7 +40,7 @@ class Header extends React.Component {
 
                 </p>
               </div>
-              <button type="button">Adicionar</button>
+              <Link to="/despesas"><button type="button">Adicionar</button></Link>
             </div>
           </div>
         </nav>

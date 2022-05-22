@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies } from '../actions';
 import Header from '../components/Header';
-import FormDespesas from '../components/FormDespesas';
+// import FormDespesas from '../components/FormDespesas';
 import Tabela from '../components/Tabela';
-import FormEdit from '../components/FormEdit';
+// import FormEdit from '../components/FormEdit';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -14,14 +14,13 @@ class Wallet extends React.Component {
   }
 
   render() {
-    const { statusEdit } = this.props;
+    // const { statusEdit } = this.props;
     return (
       <div>
         <Header />
-        TrybeWallet
-        {statusEdit
+        {/* {statusEdit
           ? <FormEdit />
-          : <FormDespesas />}
+          : <FormDespesas />} */}
         <Tabela />
       </div>);
   }
