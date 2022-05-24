@@ -52,7 +52,7 @@ class FormDespesas extends React.Component {
     return (
       <div className={ styles.depesas }>
         <Header />
-        <form className={ styles.formAdd }>
+        <form className={ styles.formAdd } autoComplete="off">
           <div className={ styles.titulo }>
             <img src={ iconcarteira } alt="iconeDespesa" />
             <h1>Adicionar Despesas</h1>
@@ -152,7 +152,7 @@ class FormDespesas extends React.Component {
 
 const mapStateToProps = (state) => ({
   coins: state.wallet.currencies,
-  id: state.wallet.expenses.length,
+  id: state.wallet.id,
 });
 
 const mapDispatchToProps = (Dispatch) => ({

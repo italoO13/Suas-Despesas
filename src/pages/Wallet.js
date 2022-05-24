@@ -3,25 +3,33 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies } from '../actions';
 import Header from '../components/Header';
-// import FormDespesas from '../components/FormDespesas';
 import Tabela from '../components/Tabela';
-// import FormEdit from '../components/FormEdit';
+import imgCadastro from '../imgs/cashier.png';
+import styles from '../styles/wallet.module.css';
 
 class Wallet extends React.Component {
-  componentDidMount() {
-    const { fetchCurrencie } = this.props;
-    fetchCurrencie();
-  }
+  // componentDidMount() {
+  //   const { fetchCurrencie } = this.props;
+  //   fetchCurrencie();
+  // }
+
+  semCadastro = () => (
+    <div className={ styles.semCadastro }>
+      <img src={ imgCadastro } alt="imagem de cadastro" />
+      <h1>Cadastre uma despesa !</h1>
+    </div>
+  )
 
   render() {
-    // const { statusEdit } = this.props;
+    const { dados } = this.props;
     return (
       <div>
         <Header />
-        {/* {statusEdit
-          ? <FormEdit />
-          : <FormDespesas />} */}
-        <Tabela />
+        {
+          dados.length === 0
+            ? this.semCadastro()
+            : <Tabela />
+        }
       </div>);
   }
 }
@@ -32,6 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   statusEdit: state.wallet.isEdit,
+  dados: state.wallet.expenses,
 });
 
 Wallet.propTypes = {

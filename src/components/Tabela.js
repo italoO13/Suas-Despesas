@@ -1,70 +1,82 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FiEdit } from 'react-icons/fi';
+import { MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import { excluirDespesa, statusEdicaoAtv } from '../actions';
+import styles from '../styles/tabela.module.css';
+import iconMethod from '../imgs/iconeMethod.png';
+import iconCoin from '../imgs/iconeCoin.png';
 
 class Tabela extends React.Component {
   render() {
     const { dados, excluir, editar } = this.props;
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className={ styles.controleDespesas }>
+        <ul className={ styles.tabela }>
           {dados.map((expense) => (
-            <tr key={ expense.id }>
-              <td>{expense.description}</td>
-              <td>{expense.tag}</td>
-              <td>{expense.method}</td>
-              <td>{ parseFloat(expense.value).toFixed(2)}</td>
-              <td>{expense.exchangeRates[expense.currency].name}</td>
-              <td>
-                {(parseFloat(
-                  expense.exchangeRates[expense.currency].ask,
-                )).toFixed(2)}
-              </td>
-              <td>
-                {(
-                  parseFloat(expense.exchangeRates[expense.currency].ask)
-              * parseFloat(expense.value)
-                ).toFixed(2)}
-              </td>
-              <td>Real</td>
-              <td>
-                <button
-                  type="button"
-                  onClick={ () => editar(expense.id) }
-                  data-testid="edit-btn"
-                >
-                  Editar
+            <li key={ expense.id } className={ styles.transacao }>
+              <div className={ styles.tabPart1 }>
+                <h2>{expense.description}</h2>
+                <p>{expense.tag}</p>
+              </div>
+              <div className={ styles.tabPart2 }>
+                <div className={ styles.method }>
+                  <img src={ iconMethod } alt="method" />
+                  <p>{expense.method}</p>
+                </div>
+                <div className={ styles.currency }>
+                  <img src={ iconCoin } alt="iconCoin" />
+                  <p>
+                    {(parseFloat(
+                      expense.exchangeRates[expense.currency].ask,
+                    )).toFixed(2)}
+                  </p>
+                </div>
+              </div>
+              <div className={ styles.value }>
+                <p>{`Valor: ${parseFloat(expense.value).toFixed(2)}`}</p>
 
-                </button>
-                <button
-                  type="button"
-                  data-testid="delete-btn"
-                  onClick={ () => excluir(expense.id) }
-                >
-                  Excluir
+                <p>{expense.exchangeRates[expense.currency].name}</p>
 
-                </button>
+              </div>
+              <div className={ styles.total }>
+                {/* <p>Despesa Total</p> */}
+                <p>
+                  {`R$: 
+                  ${(
+              parseFloat(expense.exchangeRates[expense.currency].ask)
+                * parseFloat(expense.value)
+            ).toFixed(2)}
+                  `}
+                </p>
+              </div>
+              <button
+                className={ styles.edit }
+                type="button"
+                onClick={ () => {
+                  editar(expense.id);
+                } }
+                data-testid="edit-btn"
+              >
+                <Link to="/editar"><FiEdit /></Link>
 
-              </td>
+              </button>
+              <button
+                className={ styles.excluir }
+                type="button"
+                data-testid="delete-btn"
+                onClick={ () => excluir(expense.id) }
+              >
+                <MdDelete />
 
-            </tr>
+              </button>
+
+            </li>
           ))}
-        </tbody>
-      </table>);
+        </ul>
+      </div>);
   }
 }
 

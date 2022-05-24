@@ -1,0 +1,149 @@
+.controleDespesas {
+  background-color: rgb(255, 255, 254);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin: auto;
+  margin-top: 30px;
+  width: 90vw;
+}
+
+.tabela {
+  margin: auto;
+  max-width: 1100px;
+  padding: 10px;
+}
+
+.transacao {
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 13px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.transacao:before {
+  background-color: var(--cor-azulForte);
+  border-radius: 6px 0 0 6px;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 10px;
+}
+
+.transacao:hover:before {
+  background-color: var(--cor-vermelho);
+}
+
+.tabPart1 {
+  max-width: 300px;
+  width: 33%;
+}
+
+.tabPart2 {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  width: 20%;
+}
+
+.method {
+  align-items: center;
+  display: flex;
+}
+
+.method img {
+  margin-right: 5px;
+  width: 23px;
+}
+
+.currency {
+  align-items: center;
+  display: flex;
+}
+
+.currency img {
+  margin-right: 5px;
+  margin-top: 3px;
+  width: 23px;
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.value p:first-child {
+  margin-bottom: 5px;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  width: 20%;
+}
+
+.total p:last-child {
+  font-size: 1.2rem;
+}
+
+.controleDespesas button {
+  background-color: transparent;
+  border: 0 solid transparent;
+}
+
+.edit {
+  color: var(--cor-azulForte);
+  cursor: pointer;
+  display: none;
+  font-size: 22px;
+  left: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.transacao:hover .edit {
+  display: block;
+}
+
+/* .edit:before {
+  background-color: transparent;
+  content: '';
+  height: 110%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 25px;
+} */
+
+.excluir {
+  color: red;
+  cursor: pointer;
+  display: none;
+  font-size: 26px;
+  left: 99.8%;
+  position: absolute;
+  top: 50%;
+}
+
+.excluir:before {
+  background-color: transparent;
+  content: '';
+  height: 110%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 25px;
+}
+
+.transacao:hover .excluir {
+  display: block;
+}

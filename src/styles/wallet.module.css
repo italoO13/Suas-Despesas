@@ -1,0 +1,12 @@
+.semCadastro {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.semCadastro img {
+  width: 500px;
+}

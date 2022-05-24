@@ -3,6 +3,7 @@ import { REQUEST,
   STATUS_ATIVE, STATUS_DESATIVE } from '../actions';
 
 const INITIAL_STATE = {
+  id: 0,
   idEdit: '',
   isEdit: false,
   error: '',
@@ -24,6 +25,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case GET_EXPENSE:
     return {
       ...state,
+      id: state.id + 1,
       expenses: [...state.expenses,
         {
           id: action.obj.id,

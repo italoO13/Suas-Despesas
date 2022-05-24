@@ -53,7 +53,7 @@ class Login extends React.Component {
               <p>Aqui você controla suas contas no exterior de forma fácil e rápida</p>
             </div>
           </div>
-          <form className={ styles.formLogin }>
+          <form className={ styles.formLogin } autoComplete="off">
             <div className={ styles.imgWrapper }>
               <img src={ imgLogin } alt="capaLogin" />
 
