@@ -6,7 +6,6 @@
     Seu sistema de controle financeiro para quem mora em outro país mas recebe em reais. 💚
 </h3>
 
-
 <h4 align="center">
 	🚧   Concluído 🚀 🚧
 </h4>
@@ -16,6 +15,9 @@ Tabela de conteúdos
 <!--ts-->
    * [Sobre o projeto](#-sobre-o-projeto)
    * [Funcionalidades](#-funcionalidades)
+   * [Layout](#-layout)
+   * [Tecnologias](#-tecnologias)
+
 
 <!--te-->
 
@@ -39,6 +41,15 @@ Suas Despesas - E se você morasse no exterior gastando em uma moeda extrangeira
 
 ## 🎨 Layout
 
-<a href="https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta?node-id=136%3A546">
-  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
-</a>
+  <img alt="review layout" src="1.jpg">
+  <img alt="review layout" src="2.jpg">
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+-   **React Router Dom**
+-   **React**
+-   **Redux**
+-   **Figma**
+
